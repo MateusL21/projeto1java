@@ -8,6 +8,24 @@ public class Student {
     private String phone;
     private int idCurso;
     private int period;
+
+
+    public Student(int Id, String name, String email, String phone, int idCurso, int period){
+        this.id = Id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.idCurso = idCurso;
+        this.period = period;
+        
+    }
+
+    public Student(){
+
+    }
+
+
+
     public int getId() {
         return id;
     }
