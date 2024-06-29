@@ -1,6 +1,7 @@
 package com.spring.java.resources;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -17,20 +18,11 @@ import jakarta.annotation.PostConstruct;
 @RestController
 public class StudentController {
 
-    private List<Student> students = new ArrayList<>();
+    private List<Student> students = Arrays.asList(new Student(1, "Mateus", "mateus@abutua.com", "(11) 9999-9999", 1, 1),
+    new Student(2, "Jupter", "jupter@abutua.com", "(11) 9999-9999", 2, 2), 
+    new Student(3, "Saturno", "saturno@abutua.com", "(11) 7777-9999", 3 ,3));
 
-    @PostConstruct
-    public void init() {
 
-        Student s1 = new Student(1, "Mateus", "mateus@abutua.com", "(11) 9999-9999", 1, 1);
-        Student s2 = new Student(2, "Jupter", "jupter@abutua.com", "(11) 9999-9999", 2, 2);
-        Student s3 = new Student(3, "Saturno", "saturno@abutua.com", "(11) 7777-9999", 3 ,3);
-
-        students.add(s1);
-        students.add(s2);
-        students.add(s3);
-
-    }
 
     @GetMapping("students/{id}")
     public ResponseEntity<Student> getStudent(@PathVariable int id) {
@@ -44,5 +36,9 @@ public class StudentController {
                                return ResponseEntity.ok(stud);
     }
 
+    @GetMapping("students")
+    public List<Student> getStudents() {
+        return students;
+    }
 
 }
