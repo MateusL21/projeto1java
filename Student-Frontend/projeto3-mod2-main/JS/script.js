@@ -1,37 +1,13 @@
-var products = [
-    {
-        id: 1,
-        name: "Pedro Antonio",
-        email: "pedro@abutua.com",
-        phone: "(15) 9999-9999",
-        category: 3,
-        shift: "Tarde"
-    },
-    {
-        id: 2,
-        name: "Laura Antunes",
-        email: "laura@abutua.com",
-        phone: "(15) 8888-8888",
-        category: 1,
-        shift: "Noite"
-    },
-];
+//data
+var products = [];
 
-var categories = [
-    { id: 1, name: "Java" },
-    { id: 2, name: "Java Script" },
-    { id: 3, name: "Angular" }
-];
+var categories = [];
 
 //Onload
-loadProducts();
 
-//Load all products
-function loadProducts() {
-    for (let prod of products) {
-        addNewRow(prod);
-    }
-}
+//LoadCategories
+
+
 
 // save a student
 function save() {
@@ -41,7 +17,7 @@ function save() {
         email: document.getElementById("inputEmail").value,
         phone: document.getElementById("inputPhone").value,
         category: document.getElementById("selectCourse").value,
-        shift: getSelectedShift()
+        period: getSelectedShift()
     };
 
     addNewRow(prod);
@@ -93,14 +69,13 @@ function addNewRow(prod) {
 
     // Insert Course
     var courseCell = newRow.insertCell();
-    var courseText = document.createTextNode(categories[prod.category - 1].name);
+    var courseText = document.createTextNode(categories[prod.idCurso - 1].name);
     courseCell.appendChild(courseText);
     courseCell.classList.add("d-none", "d-md-table-cell")
 
     // Insert Shift
     var shiftCell = newRow.insertCell();
-    var shiftText = document.createTextNode(prod.shift);
+    var shiftText = document.createTextNode(prod.period);
     shiftCell.appendChild(shiftText);
     shiftCell.classList.add("d-none", "d-md-table-cell");
 }
-

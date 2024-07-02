@@ -49,9 +49,6 @@
               <div class="col-sm-4">
                 <select class="form-select" aria-label="Selecione um curso" id="selectCourse" required>
                   <option value="" selected>Escolha:</option>
-                  <option value="1">Java</option>
-                  <option value="2">Java Script</option>
-                  <option value="3">Angular</option>
                 </select>
               </div>
             </div>
@@ -129,6 +126,37 @@
     <script src="JS/jquery-3.6.0.min.js"></script>
     <script src="JS/jquery.mask.min.js"></script>
     <script>$("#inputPhone").mask("(99)9 9999-9999");</script>
+    <script>
+    loadCategories();
+    loadProducts();
+    
+function loadCategories(){
+  $.ajax({
+    url:"http://localhost:8080/courses",
+    type:"GET",
+    async: false,
+    success: (response) =>{
+    categories = response
+    for(var cat of categories){
+      document.getElementById("selectCourse").innerHTML += `<option value=${cat.id}>${cat.name}</option>`;
+    }
+  }});
+
+}
+
+      //Load all products
+      function loadProducts() {
+
+        $.getJSON("http://localhost:8080/students", (response) => {
+          products =response
+
+          for (let prod of products) {
+              addNewRow(prod);
+          }
+        });
+          
+      }
+      </script>
 
 </body>
 
