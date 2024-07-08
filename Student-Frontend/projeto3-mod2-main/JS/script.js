@@ -39,7 +39,7 @@ function save() {
         name: document.getElementById("inputName").value,
         email: document.getElementById("inputEmail").value,
         phone: document.getElementById("inputPhone").value,
-        category: document.getElementById("selectCourse").value,
+        idCurso: document.getElementById("selectCourse").value,
         period: getSelectedShift()
     };
 

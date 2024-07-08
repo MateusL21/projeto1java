@@ -7,10 +7,10 @@ public class Student {
     private String email;
     private String phone;
     private int idCurso;
-    private int period;
+    private String period;
 
 
-    public Student(int Id, String name, String email, String phone, int idCurso, int period){
+    public Student(int Id, String name, String email, String phone, int idCurso, String period){
         this.id = Id;
         this.name = name;
         this.email = email;
@@ -56,10 +56,10 @@ public class Student {
     public void setIdCurso(int idCurso) {
         this.idCurso = idCurso;
     }
-    public int getPeriod() {
+    public String getPeriod() {
         return period;
     }
-    public void setPeriod(int period) {
+    public void setPeriod(String period) {
         this.period = period;
     }
 
