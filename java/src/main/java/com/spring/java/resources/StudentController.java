@@ -24,7 +24,11 @@ import jakarta.annotation.PostConstruct;
 @CrossOrigin
 public class StudentController {
 
-    private List<Student> students = new ArrayList<>();
+    private List<Student> students = new ArrayList<>(Arrays.asList(
+        new Student(1, "Marcos", "marcos@abutua.com", "(11) 9898-3232", 2, "Tarde"),
+        new Student(2, "Mateus", "mateus@abutua.com", "(11) 8888-3333", 3, "Noite"),
+        new Student(3, "Carlos", "carlos@abutua.com", "(11) 9999-2323", 1, "Manhã")
+    ));
     
     @PostMapping("students")
     public ResponseEntity<Student> save(@RequestBody Student student) {

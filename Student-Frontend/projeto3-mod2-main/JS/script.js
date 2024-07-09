@@ -33,27 +33,30 @@ function loadCategories(){
           
       }
 
-function save() {
-    var stud = {
-        id: students.length + 1,
-        name: document.getElementById("inputName").value,
-        email: document.getElementById("inputEmail").value,
-        phone: document.getElementById("inputPhone").value,
-        idCurso: document.getElementById("selectCourse").value,
-        period: getSelectedShift()
-    };
-
-    $.ajax({
-      url:"http://localhost:8080/students",
-      type:"POST",
-      contentType: "application/json",
-      data: JSON.stringify(stud),
-      success: (savedStudent) =>{
-        addNewRow(savedStudent);
-        student.push(savedStudent);
-        document.getElementById("formStudent").reset();
-    }});
-}
+      function save() {
+        var stud = {
+            id: students.length + 1,
+            name: document.getElementById("inputName").value,
+            email: document.getElementById("inputEmail").value,
+            phone: document.getElementById("inputPhone").value,
+            idCurso: document.getElementById("selectCourse").value,
+            period: getSelectedShift()
+        };
+    
+        $.ajax({
+            url: "http://localhost:8080/students",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(stud),
+            success: (savedStudent) => {
+                document.getElementById("formStudent").reset();
+                addNewRow(savedStudent);
+                students.push(savedStudent);
+            }
+        });
+    }
+    
+    
 
 function getSelectedShift() {
     var radios = document.getElementsByName("shiftRadios");
